@@ -1,0 +1,12 @@
+import PyPDF2
+
+file = 'teste_pdf_to_doc_com_texto.pdf'
+
+with open(file, mode='rb') as f:
+    reader = PyPDF2.PdfFileReader(f)
+    page = reader.getPage(0)
+
+    print(page.extractText())
+
+    with open('pdf_to_doc.txt', 'w') as f:
+        f.writelines(page.extractText())
